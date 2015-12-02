@@ -20,7 +20,7 @@
     jQuery.ajax({
         type: 'GET',
         url: "http://127.0.0.1:8000",
-        async: true,
+        async: false,
         contentType: "application/json",
         dataType: 'json', // dataType:json parst JSON implizit, dataType:text parst nicht
         success: function (data) {
