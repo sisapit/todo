@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+
+<script type='text/javascript'>
+    function ToDoItem() {
+        var self = this;
+        self.text = "N/A";
+        self.done = false;
+    }
+
+    jQuery.ajax({
+        type: 'GET',
+        url: "http://127.0.0.1:8000",
+        async: true,
+        contentType: "application/json",
+        dataType: 'json', // dataType:json parst JSON implizit, dataType:text parst nicht
+        success: function (data) {
+            data.items.forEach(function(element, index, array){
+                var item = jQuery.extend(new ToDoItem(), element);
+                console.log(item);
+            });
+        },
+        error: function (e) {
+            console.log("jQuery error message = " + e.message);
+        }
+    });
+</script>
+
+</body>
+</html>
