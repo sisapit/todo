@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        body { font-family: Verdana, Arial; margin:50px; }
+    </style>
 </head>
 <body>
-
+<ul></ul>
 <script type='text/javascript'>
     function ToDoItem() {
         var self = this;
@@ -23,6 +26,7 @@
         success: function (data) {
             data.items.forEach(function(element, index, array){
                 var item = jQuery.extend(new ToDoItem(), element);
+                jQuery("ul").append(jQuery("<li>").text(item.text));
                 console.log(item);
             });
         },
